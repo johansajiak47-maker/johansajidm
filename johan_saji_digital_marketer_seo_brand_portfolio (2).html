@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JOHAN SAJI // Digital Marketer, SEO Specialist &amp; Brand Designer</title>
+  <!-- Google Fonts: Syne (Display), Inter (Body), JetBrains Mono (Technical Metadata) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#09090B',
+            charcoal: '#121216',
+            graphite: '#1B1B21',
+            ivory: '#F4F4F0',
+            mist: '#8E8E98',
+            accent: 'var(--accent)',
+          },
+          animation: {
+            'marquee': 'marquee 26s linear infinite',
+            'float-slow': 'float 7s ease-in-out infinite',
+            'float-delayed': 'float 7s ease-in-out 3.5s infinite',
+            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.85', transform: 'scale(1.06)' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --accent: #D4FF00;
+      --accent-rgb: 212, 255, 0;
+      --bg-primary: #09090B;
+      --bg-secondary: #121216;
+      --border-subtle: rgba(244, 244, 240, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: #F4F4F0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background-color: var(--accent);
+      color: #09090B;
+    }
+
+    /* Subtle Studio Grain Overlay */
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9990;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Custom Morphing Cursor (Desktop Pointer Devices Only) */
+    @media (hover: hover) and (pointer: fine) {
+      .custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 14px;
+        height: 14px;
+        background-color: var(--accent);
+        border-radius: 9999px;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                    background-color 0.25s ease,
+                    border 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-cursor.cursor-link {
+        width: 48px;
+        height: 48px;
+        background-color: rgba(var(--accent-rgb), 0.16);
+        border: 1px solid var(--accent);
+        backdrop-filter: blur(2px);
+      }
+
+      .custom-cursor.cursor-pill {
+        width: 108px;
+        height: 36px;
+        border-radius: 9999px;
+        background-color: var(--accent);
+        color: #09090B;
+        box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.4);
+      }
+
+      .custom-cursor-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #09090B;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .custom-cursor.cursor-pill .custom-cursor-label {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      .custom-cursor {
+        display: none !important;
+      }
+    }
+
+    /* Kinetic Typography Staggered Reveal */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-word-mask {
+      display: inline-block;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+
+    .hero-word {
+      display: inline-block;
+      transform: translateY(110%);
+      opacity: 0;
+      animation: wordRise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes wordRise {
+      to {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    /* 3D Hero Card Perspective & Mouse Glare */
+    .hero-perspective {
+      perspective: 1200px;
+    }
+
+    .hero-tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.14s ease-out;
+    }
+
+    .card-glare {
+      background: radial-gradient(
+        420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--accent-rgb), 0.18),
+        transparent 65%
+      );
+    }
+
+    /* Spotlight Hover Border for Bento Cards */
+    .spotlight-card {
+      position: relative;
+    }
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(
+        520px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+        rgba(var(--accent-rgb), 0.7),
+        transparent 45%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Liquid Fill Button Hover Effect */
+    .liquid-btn {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .liquid-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--accent);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+    .liquid-btn:hover::after {
+      transform: scaleY(1);
+    }
+    .liquid-btn:hover {
+      color: #09090B !important;
+      border-color: var(--accent);
+    }
+
+    /* Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(18, 18, 22, 0.76);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 244, 240, 0.09);
+    }
+
+    /* Accent Glow Effects */
+    .accent-glow {
+      box-shadow: 0 0 42px -10px rgba(var(--accent-rgb), 0.42);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090B;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #272730;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    /* Project Card Image Zoom & Tilt */
+    .project-card .project-art {
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-art {
+      transform: scale(1.045) translateY(-3px);
+    }
+
+    /* Animated SVG Sparkline */
+    .sparkline-path {
+      stroke-dasharray: 280;
+      stroke-dashoffset: 280;
+      animation: drawSpark 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+    }
+    @keyframes drawSpark {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /* Capability Accordion Smooth Transition */
+    .accordion-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .accordion-item.active .accordion-content {
+      grid-template-rows: 1fr;
+    }
+    .accordion-inner {
+      overflow: hidden;
+    }
+
+    /* Orbital Radar & Holographic Pulse Rings */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinReverseSlow {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .orbit-ring-cw {
+      animation: spinSlow 24s linear infinite;
+    }
+    .orbit-ring-ccw {
+      animation: spinReverseSlow 18s linear infinite;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-obsidian">
+
+  <!-- Grain Noise Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Morphing Cursor -->
+  <div id="customCursor" class="custom-cursor" aria-hidden="true">
+    <span id="cursorLabel" class="custom-cursor-label">EXPLORE CASE</span>
+  </div>
+
+  <!-- =========================================================
+       1. FLOATING GLASSMORPHISM HEADER
+       ========================================================= -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-10">
+    <nav class="max-w-7xl mx-auto glass-panel rounded-full px-4 sm:px-6 py-3 flex items-center justify-between shadow-2xl">
+      <!-- Brand Monogram Emblem: JOHAN SAJI. -->
+      <a href="#top" class="flex items-center gap-3 group interactive-el" aria-label="Johan Saji Home">
+        <div class="relative w-10 h-10 rounded-full bg-accent text-obsidian font-display font-extrabold text-sm flex items-center justify-center tracking-tighter transition-transform duration-300 group-hover:rotate-12 shadow-[0_0_20px_rgba(var(--accent-rgb),0.4)]">
+          JS.
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-ivory border-2 border-obsidian"></span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-sm sm:text-base tracking-tight leading-none text-ivory">JOHAN SAJI<span class="text-accent">.</span></span>
+          <span class="font-mono text-[10px] text-mist tracking-widest uppercase mt-0.5 hidden sm:inline">SEO • Paid Ads • Design</span>
+        </div>
+      </a>
+
+      <!-- Center Anchor Links (Desktop) -->
+      <div class="hidden md:flex items-center gap-7 text-xs font-mono uppercase tracking-widest text-mist">
+        <a href="#work" class="hover:text-ivory transition-colors py-1 interactive-el">Campaigns <span class="text-accent text-[10px]">04</span></a>
+        <a href="#seo-tips" class="hover:text-ivory transition-colors py-1 interactive-el">SEO Tips <span class="text-accent text-[10px]">LIVE</span></a>
+        <a href="#expertise" class="hover:text-ivory transition-colors py-1 interactive-el">Expertise</a>
+        <a href="#lab" class="hover:text-ivory transition-colors py-1 interactive-el">Growth Lab</a>
+        <a href="#contact" class="hover:text-ivory transition-colors py-1 interactive-el">Contact</a>
+      </div>
+
+      <!-- Right Status Badge + CTA -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Pulsing Acid Lime Status Indicator -->
+        <div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-obsidian/85 border border-white/10">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+          </span>
+          <span class="font-mono text-[10px] text-ivory/90 tracking-wider uppercase">Available for Growth &amp; Brand Projects</span>
+        </div>
+
+        <!-- Magnetic CTA Trigger -->
+        <button onclick="openContactModal('Full-Stack Growth')" data-cursor-text="LAUNCH" class="magnetic-btn interactive-el px-4 sm:px-5 py-2 rounded-full bg-ivory text-obsidian hover:bg-accent font-mono text-xs font-semibold uppercase tracking-wider transition-all duration-300 shadow-md active:scale-95">
+          Start a Campaign
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle Menu" class="md:hidden w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-ivory hover:border-accent transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden mt-2 max-w-7xl mx-auto glass-panel rounded-3xl p-5 flex-col gap-4 border border-white/10">
+      <div class="flex items-center gap-2 px-3 py-2 rounded-2xl bg-obsidian/70 border border-white/5">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+        </span>
+        <span class="font-mono text-[11px] text-ivory/90 uppercase">Available for Growth &amp; Brand Projects</span>
+      </div>
+      <div class="grid grid-cols-2 gap-2 font-mono text-xs uppercase tracking-wider">
+        <a href="#work" onclick="toggleMobileMenu()" class="p-3 rounded-2xl bg-white/5 hover:bg-accent hover:text-obsidian transition-colors">01. Campaigns</a>
+        <a href="#seo-tips" onclick="toggleMobileMenu()" class="p-3 rounded-2xl bg-white/5 hover:bg-accent hover:text-obsidian transition-colors">02. SEO Tips</a>
+        <a href="#expertise" onclick="toggleMobileMenu()" class="p-3 rounded-2xl bg-white/5 hover:bg-accent hover:text-obsidian transition-colors">03. Expertise</a>
+        <a href="#lab" onclick="toggleMobileMenu()" class="p-3 rounded-2xl bg-white/5 hover:bg-accent hover:text-obsidian transition-colors">04. Growth Lab</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="col-span-2 p-3 rounded-2xl bg-white/5 hover:bg-accent hover:text-obsidian transition-colors">05. Contact &amp; Growth Brief</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =========================================================
+         2. HERO SECTION (KINETIC HEADLINE + LIVE GROWTH TELEMETRY)
+         ========================================================= -->
+    <section class="relative min-h-screen pt-32 pb-20 lg:pt-40 lg:pb-24 px-4 sm:px-6 lg:px-10 flex flex-col justify-between overflow-hidden">
+      <!-- Floating Parallax Orbs -->
+      <div class="pointer-events-none absolute -top-24 right-1/4 w-[500px] h-[500px] rounded-full opacity-20 blur-[130px] animate-pulse-glow" style="background: radial-gradient(circle, var(--accent) 0%, transparent 70%);"></div>
+      <div class="pointer-events-none absolute bottom-10 -left-24 w-[380px] h-[380px] rounded-full opacity-10 blur-[110px]" style="background: radial-gradient(circle, var(--accent) 0%, transparent 70%);"></div>
+
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Left Kinetic Editorial Column -->
+        <div class="lg:col-span-7 space-y-7 z-10">
+          <!-- Eyebrow Metadata -->
+          <div class="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/10 bg-charcoal/85 reveal-up">
+            <span class="font-mono text-[11px] uppercase tracking-widest text-accent font-semibold">Digital Marketer • SEO • Brand Designer</span>
+            <span class="text-white/20">•</span>
+            <span class="font-mono text-[11px] text-mist">GLOBAL CAMPAIGNS</span>
+          </div>
+
+          <!-- Oversized Staggered Kinetic Headline -->
+          <h1 class="font-display font-extrabold text-4xl sm:text-6xl xl:text-[4.25rem] leading-[0.95] tracking-tight uppercase">
+            <span class="block text-ivory">
+              <span class="hero-word-mask"><span class="hero-word" style="animation-delay: 60ms;">SCALING</span></span>
+              <span class="hero-word-mask"><span class="hero-word" style="animation-delay: 140ms;">BRANDS</span></span>
+            </span>
+            <span class="block text-ivory sm:pl-8">
+              <span class="hero-word-mask"><span class="hero-word" style="animation-delay: 220ms;">THROUGH</span></span>
+              <span class="hero-word-mask"><span class="hero-word text-accent italic" style="animation-delay: 300ms;">SEO,</span></span>
+            </span>
+            <span class="block">
+              <span class="hero-word-mask"><span class="hero-word text-ivory" style="animation-delay: 380ms;">PAID MEDIA</span></span>
+              <span class="hero-word-mask"><span class="hero-word text-ivory" style="animation-delay: 460ms;">&amp;</span></span>
+              <span class="hero-word-mask relative inline-block">
+                <span class="hero-word text-ivory" style="animation-delay: 540ms;">DESIGN</span>
+                <svg class="absolute -bottom-1.5 left-0 w-full h-3 text-accent" viewBox="0 0 240 12" fill="none" preserveAspectRatio="none">
+                  <path d="M2 9.5C65 3.5 175 2.5 238 8.5" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-mist text-base sm:text-lg max-w-xl leading-relaxed font-light reveal-up" style="transition-delay: 220ms;">
+            Hi, I’m <span class="text-ivory font-medium">Johan Saji</span>. I combine data-backed <span class="text-ivory font-normal">Technical SEO</span>, high-ROAS <span class="text-ivory font-normal">Meta &amp; Google Ads</span>, and conversion-engineered <span class="text-ivory font-normal">Web &amp; Brand Design</span> to turn traffic into predictable revenue.
+          </p>
+
+          <!-- Dual Magnetic & Liquid Fill CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2 reveal-up" style="transition-delay: 280ms;">
+            <a href="#work" data-cursor-text="EXPLORE" class="magnetic-btn interactive-el group inline-flex items-center gap-3 px-7 py-4 rounded-full bg-accent text-obsidian font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-300 hover:scale-[1.03] accent-glow">
+              <span>Explore Case Studies</span>
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+
+            <button onclick="openContactModal('SEO Audit')" data-cursor-text="AUDIT" class="magnetic-btn liquid-btn interactive-el inline-flex items-center gap-3 px-7 py-4 rounded-full border border-white/15 bg-charcoal/80 text-ivory font-mono text-xs sm:text-sm uppercase tracking-wider transition-all duration-300">
+              <span>Request Free Growth Audit</span>
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+            </button>
+          </div>
+
+          <!-- Verified Marketing Impact Micro-Metrics -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-lg reveal-up" style="transition-delay: 340ms;">
+            <div>
+              <div class="font-display font-bold text-2xl sm:text-3xl text-accent">4.6×</div>
+              <div class="font-mono text-[11px] text-mist uppercase tracking-wider mt-0.5">Avg. Paid ROAS</div>
+            </div>
+            <div>
+              <div class="font-display font-bold text-2xl sm:text-3xl text-ivory">+280%</div>
+              <div class="font-mono text-[11px] text-mist uppercase tracking-wider mt-0.5">Organic Traffic Lift</div>
+            </div>
+        <!-- Right Interactive 3D-Tilt "Live Campaign & Growth Command Center" Card -->
+        <div class="lg:col-span-5 hero-perspective reveal-up" style="transition-delay: 200ms;">
+          <div id="heroTiltCard" data-cursor-text="COMMAND" class="hero-tilt-card interactive-el relative rounded-[2rem] p-6 sm:p-7 bg-charcoal border border-white/10 shadow-2xl overflow-hidden">
+            <!-- Dynamic Orbital Radar & Growth Node Canvas -->
+            <canvas id="heroMeshCanvas" class="absolute inset-0 w-full h-full opacity-85 pointer-events-none"></canvas>
+            <!-- Mouse-reactive Spotlight Glare -->
+            <div id="heroGlare" class="card-glare absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"></div>
+
+            <!-- Inner Command Center Content -->
+            <div class="relative z-10 flex flex-col justify-between min-h-[440px] sm:min-h-[475px]">
+              <!-- Top Telemetry Bar -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian/85 border border-white/10 font-mono text-[10px] uppercase tracking-widest text-accent">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-ping"></span>
+                  Growth Command Engine
+                </span>
+                <span id="cursorCoords" class="font-mono text-[10px] text-ivory/85 bg-obsidian/80 px-2.5 py-1 rounded-full border border-white/10">
+                  ROAS: 4.82×
+                </span>
+              </div>
+
+              <!-- Animated Holographic Orbital Core & Floating Channel Nodes -->
+              <div class="relative my-3 py-4 px-3 rounded-2xl bg-obsidian/75 backdrop-blur-md border border-white/10 overflow-hidden">
+                <!-- Decorative Rotating SVG Radar Rings -->
+                <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-35">
+                  <svg class="w-56 h-56 orbit-ring-cw text-accent" viewBox="0 0 200 200" fill="none">
+                    <circle cx="100" cy="100" r="88" stroke="currentColor" stroke-width="0.8" stroke-dasharray="4 6" />
+                    <circle cx="100" cy="12" r="3.5" fill="currentColor" />
+                  </svg>
+                  <svg class="w-40 h-40 orbit-ring-ccw text-ivory absolute" viewBox="0 0 160 160" fill="none">
+                    <circle cx="80" cy="80" r="66" stroke="currentColor" stroke-width="0.7" stroke-dasharray="2 8" />
+                    <circle cx="146" cy="80" r="2.5" fill="var(--accent)" />
+                  </svg>
+                </div>
+
+                <!-- Floating Holographic Channel Nodes Grid -->
+                <div class="relative z-10 grid grid-cols-3 gap-2 text-center">
+                  <div class="p-2.5 rounded-xl bg-charcoal/90 border border-white/10 animate-float-slow">
+                    <span class="font-mono text-[9px] text-accent uppercase block">SERP RANK</span>
+                    <span class="font-display font-extrabold text-base sm:text-lg text-ivory">#1–#3</span>
+                    <span class="font-mono text-[8px] text-mist block">84 TERMS</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-accent/15 border border-accent/40 shadow-[0_0_20px_rgba(var(--accent-rgb),0.2)]">
+                    <span class="font-mono text-[9px] text-accent uppercase block">BLENDED ROI</span>
+                    <span class="font-display font-extrabold text-base sm:text-lg text-accent">+312%</span>
+                    <span class="font-mono text-[8px] text-ivory/80 block">90D VELOCITY</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-charcoal/90 border border-white/10 animate-float-delayed">
+                    <span class="font-mono text-[9px] text-accent uppercase block">PAID CTR</span>
+                    <span class="font-display font-extrabold text-base sm:text-lg text-ivory">5.48%</span>
+                    <span class="font-mono text-[8px] text-mist block">META + PPC</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live ROAS / CTR Sparkline & Organic Traffic Counter -->
+              <div class="mb-3 p-4 sm:p-5 rounded-2xl bg-obsidian/80 backdrop-blur-md border border-white/10 space-y-3">
+                <div class="flex items-end justify-between">
+                  <div>
+                    <span class="font-mono text-[10px] text-mist uppercase tracking-widest block">Organic Sessions (90D)</span>
+                    <div class="flex items-baseline gap-2 mt-1">
+                      <span id="liveOrganicCounter" class="font-display font-extrabold text-3xl sm:text-4xl text-ivory">148,920</span>
+                      <span class="px-2 py-0.5 rounded-md bg-accent/15 text-accent font-mono text-[11px] font-semibold">+312%</span>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-mono text-[10px] text-mist uppercase block">Conversion Lift</span>
+                    <span class="font-mono text-sm font-semibold text-accent">+11.2% CVR</span>
+                  </div>
+                </div>
+
+                <!-- Animated SVG Growth Sparkline -->
+                <div class="relative h-16 w-full pt-1">
+                  <svg class="w-full h-full overflow-visible" viewBox="0 0 260 64" fill="none">
+                    <defs>
+                      <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.34"/>
+                        <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0 56 C30 52, 48 44, 75 40 C102 36, 120 22, 152 25 C184 28, 208 10, 260 4 L260 64 L0 64 Z" fill="url(#sparkFill)" />
+                    <path class="sparkline-path" d="M0 56 C30 52, 48 44, 75 40 C102 36, 120 22, 152 25 C184 28, 208 10, 260 4" stroke="var(--accent)" stroke-width="2.75" stroke-linecap="round" />
+                    <circle cx="260" cy="4" r="4.5" fill="var(--accent)" />
+                  </svg>
+                </div>
+
+                <!-- Channel Attribution Bars -->
+                <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/10 font-mono text-[10px]">
+                  <div>
+                    <span class="text-mist block">SEO SEARCH</span>
+                    <span class="text-ivory font-semibold">52.4%</span>
+                  </div>
+                  <div>
+                    <span class="text-mist block">META + GOOGLE</span>
+                    <span class="text-accent font-semibold">36.8%</span>
+                  </div>
+                  <div>
+                    <span class="text-mist block">BRAND / CRO</span>
+                    <span class="text-ivory font-semibold">10.8%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Core Discipline Pills -->
+              <div class="space-y-2">
+                <div class="p-3 rounded-2xl bg-obsidian/85 border border-white/10 flex items-center justify-between">
+                  <div>
+                    <div class="font-mono text-[9px] text-mist uppercase">Latest Verified Campaign Win</div>
+                    <div class="text-xs font-medium text-ivory">Global Export B2B — Organic + Paid</div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-accent text-obsidian font-mono text-[11px] font-bold">
+                    4.8× ROAS
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infinite Horizontal Kinetic Marquee Ticker -->
+      <div class="mt-16 pt-6 border-y border-white/10 overflow-hidden select-none">
+        <div class="flex whitespace-nowrap animate-marquee">
+          <div class="flex items-center gap-8 pr-8 font-display font-bold text-base sm:text-xl uppercase tracking-wider text-mist/80">
+            <span>TECHNICAL SEO</span>
+            <span class="text-accent">•</span>
+            <span>GOOGLE ADS</span>
+            <span class="text-accent">•</span>
+            <span>META CAMPAIGNS</span>
+            <span class="text-accent">•</span>
+            <span>CONVERSION WEB DESIGN</span>
+            <span class="text-accent">•</span>
+            <span>BRAND IDENTITY</span>
+            <span class="text-accent">•</span>
+            <span>ANALYTICS &amp; GTM</span>
+            <span class="text-accent">•</span>
+          </div>
+          <div class="flex items-center gap-8 pr-8 font-display font-bold text-base sm:text-xl uppercase tracking-wider text-mist/80" aria-hidden="true">
+            <span>TECHNICAL SEO</span>
+            <span class="text-accent">•</span>
+            <span>GOOGLE ADS</span>
+            <span class="text-accent">•</span>
+            <span>META CAMPAIGNS</span>
+            <span class="text-accent">•</span>
+            <span>CONVERSION WEB DESIGN</span>
+            <span class="text-accent">•</span>
+            <span>BRAND IDENTITY</span>
+            <span class="text-accent">•</span>
+            <span>ANALYTICS &amp; GTM</span>
+            <span class="text-accent">•</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. FILTERABLE BENTO CASE STUDY SHOWCASE
+         ========================================================= -->
+    <section id="work" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+      <!-- Section Header & Category Filter Controls -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 reveal-up">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-accent block mb-3">// 01. Selected Campaigns &amp; Builds</span>
+          <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-ivory">
+            Proven <span class="text-mist">Growth Case Studies</span>
+          </h2>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div id="filterContainer" class="flex flex-wrap gap-2" role="tablist" aria-label="Filter case studies by discipline">
+          <button data-filter="all" class="filter-btn active interactive-el px-4 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 bg-accent text-obsidian font-semibold">
+            All Campaigns (04)
+          </button>
+          <button data-filter="seo" class="filter-btn interactive-el px-4 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 bg-charcoal text-mist border border-white/10 hover:text-ivory">
+            SEO &amp; Organic
+          </button>
+          <button data-filter="ads" class="filter-btn interactive-el px-4 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 bg-charcoal text-mist border border-white/10 hover:text-ivory">
+            Paid Ads (Meta/Google)
+          </button>
+          <button data-filter="design" class="filter-btn interactive-el px-4 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-all duration-300 bg-charcoal text-mist border border-white/10 hover:text-ivory">
+            Web &amp; Brand Design
+          </button>
+        </div>
+      </div>
+
+      <!-- Asymmetric Bento Case Study Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3B. DAILY SEO TIPS & HACKS DISPATCH SECTION
+         ========================================================= -->
+    <section id="seo-tips" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto border-t border-white/10">
+      <!-- Section Header + Post Daily Tip CTA -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 reveal-up">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal border border-white/10 mb-3">
+            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <span class="font-mono text-[11px] uppercase tracking-widest text-accent">// Daily Search &amp; Growth Dispatch</span>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl tracking-tight uppercase text-ivory">
+            Daily SEO <span class="text-mist">Tips &amp; Hacks</span>
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="savedFilterToggle" onclick="toggleSavedTipsOnly()" class="interactive-el inline-flex items-center gap-2 px-4 py-3 rounded-full bg-charcoal border border-white/10 hover:border-accent font-mono text-xs uppercase tracking-wider text-ivory transition-colors">
+            <span>★ Saved Hacks</span>
+            <span id="savedTipsCount" class="px-2 py-0.5 rounded-full bg-obsidian text-accent text-[10px] font-bold">0</span>
+          </button>
+          <button onclick="openNewTipModal()" data-cursor-text="PUBLISH" class="magnetic-btn interactive-el inline-flex items-center gap-2 px-5 py-3 rounded-full bg-accent text-obsidian font-mono text-xs font-bold uppercase tracking-wider hover:scale-[1.03] transition-transform accent-glow">
+            <span>+ Post Daily Tip</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Featured Hack of the Day Spotlight Card -->
+      <div id="featuredSeoHackCard" class="spotlight-card rounded-[2rem] bg-gradient-to-br from-charcoal via-charcoal to-obsidian border border-white/15 p-6 sm:p-10 mb-10 relative overflow-hidden reveal-up">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <!-- Search Bar + Category Filter Bar -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 reveal-up">
+        <!-- Category Pills -->
+        <div id="seoTipFilters" class="flex flex-wrap gap-2" role="tablist" aria-label="Filter SEO tips by category">
+          <button data-tip-cat="all" class="tip-filter-btn active interactive-el px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider bg-accent text-obsidian font-semibold transition">
+            All Hacks
+          </button>
+          <button data-tip-cat="Technical SEO" class="tip-filter-btn interactive-el px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+            Technical SEO
+          </button>
+          <button data-tip-cat="GEO / AI Search" class="tip-filter-btn interactive-el px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+            GEO / AI Search
+          </button>
+          <button data-tip-cat="Local SEO" class="tip-filter-btn interactive-el px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+            Local SEO
+          </button>
+          <button data-tip-cat="On-Page & Content" class="tip-filter-btn interactive-el px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wider bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+            On-Page &amp; Content
+          </button>
+        </div>
+
+        <!-- Live Keyword Search Input -->
+        <div class="relative w-full md:w-72">
+          <input id="seoTipSearch" type="search" placeholder="Search schema, CTR, GEO, crawl..." aria-label="Search daily SEO tips"
+            class="w-full pl-4 pr-10 py-2.5 rounded-full bg-charcoal border border-white/10 text-xs font-mono text-ivory placeholder-mist/60 focus:outline-none focus:border-accent" />
+          <span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-mono text-xs text-mist pointer-events-none">⌘K</span>
+        </div>
+      </div>
+
+      <!-- Daily SEO Tips Grid -->
+      <div id="seoTipsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. MULTI-DISCIPLINARY CAPABILITIES (INTERACTIVE ACCORDION)
+         ========================================================= -->
+    <section id="expertise" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-charcoal/50 border-y border-white/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <!-- Left Sticky Editorial Summary -->
+          <div class="lg:col-span-5 lg:sticky lg:top-28 space-y-6 reveal-up">
+            <span class="font-mono text-xs uppercase tracking-widest text-accent block">// 02. Full-Funnel Capabilities</span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-tight uppercase text-ivory leading-[1.02]">
+              Traffic, Creative <span class="text-accent">&amp; Conversion</span> Under One Roof
+            </h2>
+            <p class="text-mist text-base leading-relaxed">
+              Most marketers buy traffic without fixing the landing page—and most designers build visuals without SEO or conversion data. I unify <span class="text-ivory">search dominance, paid acquisition, graphic identity, and web engineering</span> into one cohesive growth engine.
+            </p>
+            <div class="p-5 rounded-3xl bg-obsidian border border-white/10 space-y-3">
+              <div class="flex items-center justify-between font-mono text-xs">
+                <span class="text-mist">FULL-FUNNEL ATTRIBUTION</span>
+                <span class="text-accent font-semibold">GA4 + GTM + CAPI</span>
+              </div>
+              <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-accent rounded-full w-11/12"></div>
+              </div>
+              <p class="text-xs text-mist">Every campaign ships with server-side conversion tracking, clean UTM taxonomy, and live ROI dashboards.</p>
+            </div>
+          </div>
+
+          <!-- Right 4 Core Pillars Accordion -->
+          <div class="lg:col-span-7 space-y-4 reveal-up" id="capabilitiesAccordion">
+            <!-- Pillar 01: SEO & Organic Dominance -->
+            <div class="accordion-item active interactive-el rounded-3xl bg-obsidian border border-white/10 hover:border-accent/50 transition-colors p-6 sm:p-8 cursor-pointer" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4 sm:gap-6">
+                  <span class="font-mono text-sm text-accent font-semibold">01</span>
+                  <h3 class="font-display font-bold text-xl sm:text-2xl text-ivory">Technical SEO &amp; Organic Search</h3>
+                </div>
+                <span class="accordion-icon w-9 h-9 rounded-full border border-white/15 flex items-center justify-center font-mono text-ivory transition-transform duration-300 rotate-45">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p class="text-mist text-sm sm:text-base mt-4 leading-relaxed">
+                    Comprehensive crawl audits, Core Web Vitals optimization, programmatic keyword clustering, high-intent topical authority hubs, and local/international schema architecture.
+                  </p>
+                  <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Technical Audits</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Keyword Strategy</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Local &amp; Global SEO</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-accent">SEMrush • Screaming Frog • GSC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 02: Paid Media (Meta & Google Ads) -->
+            <div class="accordion-item interactive-el rounded-3xl bg-obsidian border border-white/10 hover:border-accent/50 transition-colors p-6 sm:p-8 cursor-pointer" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4 sm:gap-6">
+                  <span class="font-mono text-sm text-accent font-semibold">02</span>
+                  <h3 class="font-display font-bold text-xl sm:text-2xl text-ivory">Social Media Ads &amp; Google PPC</h3>
+                </div>
+                <span class="accordion-icon w-9 h-9 rounded-full border border-white/15 flex items-center justify-center font-mono text-ivory transition-transform duration-300">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p class="text-mist text-sm sm:text-base mt-4 leading-relaxed">
+                    Full-funnel Meta (Instagram/Facebook) ad scaling, high-intent Google Search &amp; Performance Max campaigns, scroll-stopping ad creative testing, and retargeting sequences engineered for maximum ROAS.
+                  </p>
+                  <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Meta Ads Scaling</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Google Search &amp; PMax</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Retargeting Funnels</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-accent">Meta Business Suite • Google Ads • GTM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 03: Graphic Design & Brand Identity -->
+            <div class="accordion-item interactive-el rounded-3xl bg-obsidian border border-white/10 hover:border-accent/50 transition-colors p-6 sm:p-8 cursor-pointer" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4 sm:gap-6">
+                  <span class="font-mono text-sm text-accent font-semibold">03</span>
+                  <h3 class="font-display font-bold text-xl sm:text-2xl text-ivory">Graphic Design &amp; Ad Creative Systems</h3>
+                </div>
+                <span class="accordion-icon w-9 h-9 rounded-full border border-white/15 flex items-center justify-center font-mono text-ivory transition-transform duration-300">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p class="text-mist text-sm sm:text-base mt-4 leading-relaxed">
+                    High-converting ad creatives, social media campaign kits, brand identities, pitch decks, and visual storytelling built to stop thumbs and elevate brand authority.
+                  </p>
+                  <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">High-CTR Ad Creatives</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Brand Identity</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Social Kits</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-accent">Figma • Photoshop • Illustrator</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pillar 04: Conversion Web Development -->
+            <div class="accordion-item interactive-el rounded-3xl bg-obsidian border border-white/10 hover:border-accent/50 transition-colors p-6 sm:p-8 cursor-pointer" onclick="toggleAccordion(this)">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4 sm:gap-6">
+                  <span class="font-mono text-sm text-accent font-semibold">04</span>
+                  <h3 class="font-display font-bold text-xl sm:text-2xl text-ivory">Conversion Web Design &amp; Development</h3>
+                </div>
+                <span class="accordion-icon w-9 h-9 rounded-full border border-white/15 flex items-center justify-center font-mono text-ivory transition-transform duration-300">+</span>
+              </div>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p class="text-mist text-sm sm:text-base mt-4 leading-relaxed">
+                    Fast, responsive, SEO-ready websites and high-converting campaign landing pages engineered with clean HTML/CSS/JS, WordPress, or Wix Studio to maximize lead capture.
+                  </p>
+                  <div class="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-2">
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Landing Pages</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">Wix Studio / Custom</span>
+                      <span class="px-3 py-1 rounded-full bg-charcoal text-xs font-mono text-ivory/90">CRO &amp; Speed</span>
+                    </div>
+                    <span class="font-mono text-[11px] text-accent">HTML/CSS/JS • Wix Studio • GA4</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. INTERACTIVE GROWTH & CREATIVE LAB
+         ========================================================= -->
+    <section id="lab" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto">
+      <div class="rounded-[2.25rem] bg-charcoal border border-white/10 p-6 sm:p-10 lg:p-12 relative overflow-hidden reveal-up">
+        <!-- Top Lab Header + Live Studio Accent Switcher -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/10">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian border border-white/10 mb-3">
+              <span class="w-2 h-2 rounded-full bg-accent"></span>
+              <span class="font-mono text-[11px] uppercase tracking-widest text-accent">03. Interactive Growth &amp; Creative Lab</span>
+            </div>
+            <h2 class="font-display font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-ivory">
+              ROI Simulator &amp; MarTech Stack
+            </h2>
+          </div>
+
+          <!-- Live Studio Accent Switcher -->
+          <div class="flex flex-wrap items-center gap-2.5 bg-obsidian/90 p-2.5 rounded-2xl border border-white/10">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-mist px-2">Studio Accent:</span>
+            <button onclick="setStudioAccent('#D4FF00', '212, 255, 0', 'Acid Lime')" class="interactive-el flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-ivory transition">
+              <span class="w-3 h-3 rounded-full bg-[#D4FF00]"></span> Acid Lime
+            </button>
+            <button onclick="setStudioAccent('#00F0FF', '0, 240, 255', 'Electric Cyan')" class="interactive-el flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-ivory transition">
+              <span class="w-3 h-3 rounded-full bg-[#00F0FF]"></span> Electric Cyan
+            </button>
+            <button onclick="setStudioAccent('#FF4D4D', '255, 77, 77', 'Signal Coral')" class="interactive-el flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-mono text-ivory transition">
+              <span class="w-3 h-3 rounded-full bg-[#FF4D4D]"></span> Signal Coral
+            </button>
+          </div>
+        </div>
+
+        <!-- Lab Content Grid: Interactive ROAS & Traffic Estimator + Draggable MarTech Pills -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 items-stretch">
+          <!-- Left: Interactive ROAS & Organic Growth Estimator Widget -->
+          <div class="lg:col-span-6 rounded-3xl bg-obsidian border border-white/10 p-6 sm:p-7 flex flex-col justify-between space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-accent uppercase tracking-wider">ROAS &amp; Traffic Growth Estimator</span>
+              <span class="px-2.5 py-1 rounded-full bg-charcoal border border-white/10 font-mono text-[10px] text-mist">INTERACTIVE MODEL</span>
+            </div>
+
+            <!-- Sliders -->
+            <div class="space-y-5">
+              <div>
+                <div class="flex justify-between font-mono text-xs mb-2">
+                  <span class="text-mist uppercase">Monthly Paid Ad Spend</span>
+                  <span id="adSpendDisplay" class="text-ivory font-semibold">$5,000 / mo</span>
+                </div>
+                <input id="adSpendSlider" type="range" min="1000" max="25000" step="500" value="5000" aria-label="Monthly Paid Ad Spend"
+                  class="w-full accent-[var(--accent)] cursor-pointer" />
+              </div>
+
+              <div>
+                <div class="flex justify-between font-mono text-xs mb-2">
+                  <span class="text-mist uppercase">SEO &amp; CRO Compounding Timeline</span>
+                  <span id="seoMonthsDisplay" class="text-ivory font-semibold">6 Months</span>
+                </div>
+                <input id="seoMonthsSlider" type="range" min="3" max="12" step="1" value="6" aria-label="SEO Timeline in Months"
+                  class="w-full accent-[var(--accent)] cursor-pointer" />
+              </div>
+            </div>
+
+            <!-- Projected Output Cards -->
+            <div class="grid grid-cols-3 gap-3 pt-2">
+              <div class="p-3.5 rounded-2xl bg-charcoal border border-white/10">
+                <span class="font-mono text-[10px] text-mist uppercase block">Est. Paid Revenue</span>
+                <span id="projectedRevenue" class="font-display font-extrabold text-lg sm:text-2xl text-accent mt-1 block">$23,000</span>
+                <span class="font-mono text-[9px] text-mist">@ 4.6× Target ROAS</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-charcoal border border-white/10">
+                <span class="font-mono text-[10px] text-mist uppercase block">Organic Lift</span>
+                <span id="projectedOrganic" class="font-display font-extrabold text-lg sm:text-2xl text-ivory mt-1 block">+195%</span>
+                <span class="font-mono text-[9px] text-mist">High-Intent Traffic</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-charcoal border border-white/10">
+                <span class="font-mono text-[10px] text-mist uppercase block">Est. Leads / Mo</span>
+                <span id="projectedLeads" class="font-display font-extrabold text-lg sm:text-2xl text-ivory mt-1 block">310+</span>
+                <span class="font-mono text-[9px] text-mist">CRO Optimized</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Draggable Physics-Style MarTech & Design Pills Arena -->
+          <div class="lg:col-span-6 rounded-3xl bg-obsidian border border-white/10 p-6 sm:p-7 flex flex-col justify-between min-h-[300px] relative overflow-hidden" id="magneticArena">
+            <div class="flex items-center justify-between z-10">
+              <span class="font-mono text-xs text-mist uppercase tracking-wider">Draggable MarTech &amp; Creative Stack</span>
+              <button onclick="resetMagneticPills()" class="interactive-el font-mono text-[11px] text-accent hover:underline">Reset Stack</button>
+            </div>
+
+            <div id="pillContainer" class="relative w-full h-52 my-3 select-none">
+              <!-- Pills positioned & animated via JS -->
+            </div>
+
+            <div class="font-mono text-[10px] text-mist/80 flex items-center justify-between z-10 pt-2 border-t border-white/5">
+              <span>DRAG OR HOVER PILLS TO INTERACT</span>
+              <span id="activePaletteLabel" class="text-accent">ACCENT: ACID LIME</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. HIGH-IMPACT FOOTER & INTERACTIVE CONTACT SECTION
+         ========================================================= -->
+    <footer id="contact" class="pt-16 pb-12 px-4 sm:px-6 lg:px-10 border-t border-white/10 bg-charcoal/40">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+          <!-- Left Oversized CTA & One-Click Email Copy -->
+          <div class="lg:col-span-7 space-y-8 reveal-up">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-obsidian border border-white/10">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
+              </span>
+              <span class="font-mono text-[11px] uppercase tracking-widest text-accent">// 04. Scale Your Growth — Direct Strategy Line</span>
+            </div>
+            <h2 class="font-display font-extrabold text-4xl sm:text-6xl lg:text-[4.2rem] tracking-tight uppercase leading-[0.94] text-ivory">
+              LET'S SCALE YOUR <span class="text-accent">NEXT CAMPAIGN</span>
+            </h2>
+            <p class="text-mist text-base sm:text-lg max-w-xl">
+              Looking to dominate organic search, lower your paid acquisition costs, or launch a high-converting website and brand identity? Let’s build your growth roadmap.
+            </p>
+
+            <!-- One-Click Copy Email Pill + Start a Campaign Modal Trigger -->
+            <div class="flex flex-wrap items-center gap-4">
+              <button onclick="copyStudioEmail()" data-cursor-text="COPY" class="interactive-el group inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-obsidian border border-white/15 hover:border-accent transition-all">
+                <span class="font-mono text-sm sm:text-base text-ivory">hello@johansaji.com</span>
+                <span class="px-2.5 py-1 rounded-lg bg-white/10 group-hover:bg-accent group-hover:text-obsidian font-mono text-[11px] uppercase transition-colors">
+                  Copy Email
+                </span>
+              </button>
+              <button onclick="openContactModal('Full-Stack Growth')" data-cursor-text="LAUNCH" class="magnetic-btn interactive-el px-7 py-4 rounded-2xl bg-accent text-obsidian font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider hover:scale-[1.02] transition-transform accent-glow">
+                Start a Campaign ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Embedded Quick Campaign Brief Card -->
+          <div class="lg:col-span-5 reveal-up">
+            <div class="rounded-3xl bg-obsidian border border-white/10 p-6 sm:p-8 shadow-2xl">
+              <form id="footerContactForm" onsubmit="handleFormSubmit(event, 'footer')" class="space-y-5">
+                <div>
+                  <label class="block font-mono text-[11px] uppercase tracking-wider text-mist mb-2.5">Select Growth Focus</label>
+                  <div class="flex flex-wrap gap-2" id="footerScopePills">
+                    <button type="button" onclick="selectScope(this, 'footerScopeInput')" data-scope="SEO Audit" class="scope-pill active interactive-el px-3 py-1.5 rounded-full font-mono text-xs bg-accent text-obsidian font-semibold transition">
+                      SEO Audit
+                    </button>
+                    <button type="button" onclick="selectScope(this, 'footerScopeInput')" data-scope="Meta/Google Ads" class="scope-pill interactive-el px-3 py-1.5 rounded-full font-mono text-xs bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+                      Meta/Google Ads
+                    </button>
+                    <button type="button" onclick="selectScope(this, 'footerScopeInput')" data-scope="Web & Branding" class="scope-pill interactive-el px-3 py-1.5 rounded-full font-mono text-xs bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+                      Web &amp; Branding
+                    </button>
+                    <button type="button" onclick="selectScope(this, 'footerScopeInput')" data-scope="Full-Stack Growth" class="scope-pill interactive-el px-3 py-1.5 rounded-full font-mono text-xs bg-charcoal text-mist border border-white/10 hover:text-ivory transition">
+                      Full-Stack Growth
+                    </button>
+                  </div>
+                  <input type="hidden" id="footerScopeInput" value="SEO Audit" />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="footerName" class="block font-mono text-[11px] uppercase tracking-wider text-mist mb-1.5">Your Name *</label>
+                    <input id="footerName" type="text" required placeholder="Alex Rivera"
+                      class="w-full px-4 py-3 rounded-xl bg-charcoal border border-white/10 text-sm text-ivory placeholder-mist/50 focus:outline-none focus:border-accent" />
+                  </div>
+                  <div>
+                    <label for="footerEmail" class="block font-mono text-[11px] uppercase tracking-wider text-mist mb-1.5">Work Email *</label>
+                    <input id="footerEmail" type="email" required placeholder="alex@company.com"
+                      class="w-full px-4 py-3 rounded-xl bg-charcoal border border-white/10 text-sm text-ivory placeholder-mist/50 focus:outline-none focus:border-accent" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="footerMessage" class="block font-mono text-[11px] uppercase tracking-wider text-mist mb-1.5">Website URL &amp; Growth Goals *</label>
+                  <textarea id="footerMessage" rows="3" required placeholder="Share your website link, target audience, or monthly revenue goals..."
+                    class="w-full px-4 py-3 rounded-xl bg-charcoal border border-white/10 text-sm text-ivory placeholder-mist/50 focus:outline-none focus:border-accent"></textarea>
+                </div>
+
+                <button type="submit" class="interactive-el w-full py-4 rounded-xl bg-ivory hover:bg-accent text-obsidian font-mono text-xs font-semibold uppercase tracking-widest transition-colors duration-300">
+                  Launch Growth Inquiry →
+                </button>
+              </form>
+
+              <!-- Instant Submission Feedback State -->
+              <div id="footerFormSuccess" class="hidden py-8 text-center space-y-4">
+                <div class="w-12 h-12 rounded-full bg-accent/20 text-accent mx-auto flex items-center justify-center font-mono text-xl">✓</div>
+                <h3 class="font-display font-bold text-2xl text-ivory">Growth Brief Received</h3>
+                <p class="text-sm text-mist">Thanks! Johan Saji will audit your details and reply within 24 hours with a tailored strategy.</p>
+                <button onclick="resetForm('footer')" class="font-mono text-xs text-accent underline">Submit another inquiry</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Copyright & Social Bar -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-mist">
+          <div class="flex items-center gap-3">
+            <span class="text-ivory font-semibold">JOHAN SAJI<span class="text-accent">.</span></span>
+            <span>© 2026 Digital Marketing, SEO &amp; Brand Studio</span>
+          </div>
+          <div class="flex items-center gap-6">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors interactive-el">LinkedIn</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors interactive-el">Instagram</a>
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors interactive-el">Behance</a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors interactive-el">X / Twitter</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =========================================================
+       CASE STUDY SLIDE-OVER DRAWER / MODAL
+       ========================================================= -->
+  <div id="caseStudyModal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+    <!-- Backdrop -->
+    <div onclick="closeCaseModal()" class="fixed inset-0 bg-obsidian/85 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Slide-over Panel -->
+    <div class="fixed inset-y-0 right-0 w-full max-w-3xl bg-charcoal border-l border-white/10 shadow-2xl overflow-y-auto z-10 p-6 sm:p-10">
+      <div class="flex items-center justify-between pb-6 border-b border-white/10 sticky top-0 bg-charcoal/95 backdrop-blur-md z-20">
+        <div class="flex items-center gap-3">
+          <span id="modalCategoryTag" class="px-3 py-1 rounded-full bg-accent/15 text-accent font-mono text-[11px] uppercase">SEO &amp; Organic</span>
+          <span id="modalYear" class="font-mono text-xs text-mist">2026</span>
+        </div>
+        <button onclick="closeCaseModal()" aria-label="Close Case Study" class="interactive-el w-10 h-10 rounded-full bg-obsidian border border-white/15 hover:border-accent text-ivory flex items-center justify-center font-mono text-sm transition">
+          ✕
+        </button>
+      </div>
+
+      <div class="py-8 space-y-8">
+        <div>
+          <h2 id="modalProjectTitle" class="font-display font-extrabold text-3xl sm:text-5xl text-ivory uppercase tracking-tight">Case Study Title</h2>
+          <p id="modalClientRole" class="font-mono text-xs text-mist uppercase tracking-wider mt-2">Role: Digital Marketing &amp; SEO Lead</p>
+        </div>
+
+        <!-- Visual Mockup Preview Banner -->
+        <div id="modalVisualBanner" class="w-full h-60 sm:h-72 rounded-3xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+          <!-- Injected dynamic artwork -->
+        </div>
+
+        <!-- Verified Results KPI Grid -->
+        <div>
+          <span class="font-mono text-[11px] text-accent uppercase tracking-widest block mb-3">03 // Verified Campaign Results</span>
+          <div id="modalMetricsGrid" class="grid grid-cols-3 gap-4">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Challenge & Strategy Editorial Blocks -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="p-6 rounded-3xl bg-obsidian border border-white/10 space-y-2">
+            <span class="font-mono text-[11px] text-accent uppercase tracking-widest">01 // The Challenge</span>
+            <p id="modalChallenge" class="text-sm text-mist leading-relaxed"></p>
+          </div>
+          <div class="p-6 rounded-3xl bg-obsidian border border-white/10 space-y-2">
+            <span class="font-mono text-[11px] text-accent uppercase tracking-widest">02 // Growth Strategy</span>
+            <p id="modalSolution" class="text-sm text-mist leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- Execution Stack Tags -->
+        <div>
+          <span class="font-mono text-xs text-mist uppercase tracking-wider block mb-3">Execution Stack &amp; Tools</span>
+          <div id="modalTechStack" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Bottom Action -->
+        <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <button onclick="closeCaseModal(); openContactModal('Full-Stack Growth');" class="interactive-el px-6 py-3.5 rounded-full bg-accent text-obsidian font-mono text-xs font-semibold uppercase tracking-wider">
+            Replicate These Results →
+          </button>
+          <button onclick="closeCaseModal()" class="interactive-el px-5 py-3.5 rounded-full border border-white/15 font-mono text-xs text-mist hover:text-ivory uppercase">
+            Back to All Campaigns
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       START A CAMPAIGN / GROWTH BRIEF MODAL
+       ========================================================= -->
+  <div id="contactModal" class="fixed inset-0 z-[110] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div onclick="closeContactModal()" class="fixed inset-0 bg-obsidian/85 backdrop-blur-md"></div>
+
+    <div class="relative z-10 w-full max-w-xl rounded-[2rem] bg-charcoal border border-white/15 p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
+        <div>
+          <span class="font-mono text-[11px] text-accent uppercase tracking-widest">Direct Growth Line // Johan Saji</span>
+          <h3 id="contactModalTitle" class="font-display font-bold text-2xl text-ivory mt-0.5">Start a Campaign</h3>
+        </div>
+        <button onclick="closeContactModal()" aria-label="Close Modal" class="w-9 h-9 rounded-full bg-obsidian border border-white/15 hover:border-accent text-ivory flex items-center justify-center font-mono text-xs">
+          ✕
+        </button>
+      </div>
+
+      <form id="modalContactForm" onsubmit="handleFormSubmit(event, 'modal')" class="mt-6 space-y-4">
+        <div>
+          <label class="block font-mono text-[11px] uppercase tracking-wider text-mist mb-2">Select Service Track</label>
+          <div class="flex flex-wrap gap-2" id="modalScopePills">
+            <button type="button" onclick="selectScope(this, 'modalScopeInput')" data-scope="SEO Audit" class="scope-pill active px-3.5 py-1.5 rounded-full font-mono text-xs bg-accent text-obsidian font-semibold">
+              SEO Audit
+            </button>
+            <button type="button" onclick="selectScope(this, 'modalScopeInput')" data-scope="Meta/Google Ads" class="scope-pill px-3.5 py-1.5 rounded-full font-mono text-xs bg-obsidian text-mist border border-white/10">
+              Meta/Google Ads
+            </button>
+            <button type="button" onclick="selectScope(this, 'modalScopeInput')" data-scope="Web & Branding" class="scope-pill px-3.5 py-1.5 rounded-full font-mono text-xs bg-obsidian text-mist border border-white/10">
+              Web &amp; Branding
+            </button>
+            <button type="button" onclick="selectScope(this, 'modalScopeInput')" data-scope="Full-Stack Growth" class="scope-pill px-3.5 py-1.5 rounded-full font-mono text-xs bg-obsidian text-mist border border-white/10">
+              Full-Stack Growth
+            </button>
+          </div>
+          <input type="hidden" id="modalScopeInput" value="SEO Audit" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="modalName" class="block font-mono text-[11px] uppercase text-mist mb-1">Your Name *</label>
+            <input id="modalName" type="text" required placeholder="Jordan Lee"
+              class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/10 text-sm text-ivory focus:outline-none focus:border-accent" />
+          </div>
+          <div>
+            <label for="modalEmail" class="block font-mono text-[11px] uppercase text-mist mb-1">Work Email *</label>
+            <input id="modalEmail" type="email" required placeholder="jordan@brand.com"
+              class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/10 text-sm text-ivory focus:outline-none focus:border-accent" />
+          </div>
+        </div>
+
+        <div>
+          <label for="modalNotes" class="block font-mono text-[11px] uppercase text-mist mb-1">Website URL &amp; Campaign Goals *</label>
+          <textarea id="modalNotes" rows="3" required placeholder="Share your website URL, current monthly ad spend/traffic, and target goals..."
+            class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/10 text-sm text-ivory focus:outline-none focus:border-accent"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-accent text-obsidian font-mono text-xs font-semibold uppercase tracking-widest hover:opacity-95 transition">
+          Send Campaign Brief →
+        </button>
+      </form>
+
+      <div id="modalFormSuccess" class="hidden py-10 text-center space-y-4">
+        <div class="w-14 h-14 rounded-full bg-accent/20 text-accent mx-auto flex items-center justify-center font-mono text-2xl">✓</div>
+        <h4 class="font-display font-bold text-2xl text-ivory">Campaign Brief Sent!</h4>
+        <p class="text-sm text-mist max-w-sm mx-auto">I’ve received your details and will send over an initial growth audit + call slots within 24 hours.</p>
+        <button onclick="closeContactModal(); resetForm('modal');" class="px-6 py-2.5 rounded-full bg-obsidian border border-white/15 font-mono text-xs text-ivory hover:border-accent">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Banner -->
+  <div id="toastBanner" role="status" aria-live="polite" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] px-5 py-3 rounded-full bg-ivory text-obsidian font-mono text-xs font-semibold shadow-2xl opacity-0 pointer-events-none transition-all duration-300 translate-y-4">
+    Copied hello@johansaji.com to clipboard!
+  </div>
+
+  <!-- =========================================================
+       SEO TIP FULL BREAKDOWN MODAL
+       ========================================================= -->
+  <div id="seoTipDetailModal" class="fixed inset-0 z-[115] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="tipModalTitle">
+    <div onclick="closeTipDetailModal()" class="fixed inset-0 bg-obsidian/85 backdrop-blur-md"></div>
+    <div class="relative z-10 w-full max-w-2xl rounded-[2rem] bg-charcoal border border-white/15 p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div class="flex items-center gap-2.5">
+          <span id="tipModalCategory" class="px-3 py-1 rounded-full bg-accent/15 text-accent font-mono text-[11px] uppercase font-semibold">Technical SEO</span>
+          <span id="tipModalDate" class="font-mono text-xs text-mist">Today</span>
+        </div>
+        <button onclick="closeTipDetailModal()" aria-label="Close Tip Modal" class="w-9 h-9 rounded-full bg-obsidian border border-white/15 hover:border-accent text-ivory flex items-center justify-center font-mono text-xs">
+          ✕
+        </button>
+      </div>
+
+      <div class="py-6 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <span id="tipModalImpact" class="px-3 py-1 rounded-lg bg-accent text-obsidian font-mono text-xs font-bold">+18% Organic CTR</span>
+          <span id="tipModalReadTime" class="font-mono text-xs text-mist">2 MIN EXECUTION</span>
+        </div>
+
+        <h3 id="tipModalTitle" class="font-display font-extrabold text-2xl sm:text-3xl text-ivory leading-tight">Tip Title</h3>
+        <p id="tipModalSummary" class="text-sm sm:text-base text-mist leading-relaxed"></p>
+
+        <div class="p-5 rounded-2xl bg-obsidian border border-white/10 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[11px] text-accent uppercase tracking-widest">Step-by-Step Execution Playbook</span>
+          </div>
+          <ol id="tipModalSteps" class="list-decimal list-inside space-y-2 text-sm text-ivory/90 leading-relaxed"></ol>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-obsidian border border-white/10 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[10px] text-mist uppercase tracking-widest">Actionable Snippet / Search Operator</span>
+            <button id="tipModalCopyBtn" class="px-3 py-1 rounded-lg bg-accent text-obsidian font-mono text-[11px] font-bold uppercase hover:opacity-90">
+              Copy Snippet
+            </button>
+          </div>
+          <pre id="tipModalSnippet" class="font-mono text-xs text-accent bg-charcoal/90 p-3.5 rounded-xl overflow-x-auto whitespace-pre-wrap"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       + POST DAILY SEO TIP CREATOR MODAL
+       ========================================================= -->
+  <div id="newTipModal" class="fixed inset-0 z-[115] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="newTipModalTitle">
+    <div onclick="closeNewTipModal()" class="fixed inset-0 bg-obsidian/85 backdrop-blur-md"></div>
+    <div class="relative z-10 w-full max-w-xl rounded-[2rem] bg-charcoal border border-white/15 p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div>
+          <span class="font-mono text-[11px] text-accent uppercase tracking-widest">Johan Saji // Daily Dispatch</span>
+          <h3 id="newTipModalTitle" class="font-display font-bold text-2xl text-ivory mt-0.5">Publish Daily SEO Tip</h3>
+        </div>
+        <button onclick="closeNewTipModal()" aria-label="Close Publisher" class="w-9 h-9 rounded-full bg-obsidian border border-white/15 hover:border-accent text-ivory flex items-center justify-center font-mono text-xs">
+          ✕
+        </button>
+      </div>
+
+      <form onsubmit="handleNewTipSubmit(event)" class="mt-5 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="newTipCategory" class="block font-mono text-[11px] uppercase text-mist mb-1.5">Category *</label>
+            <select id="newTipCategory" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian border border-white/10 text-xs font-mono text-ivory focus:outline-none focus:border-accent">
+              <option value="Technical SEO">Technical SEO</option>
+              <option value="GEO / AI Search">GEO / AI Search</option>
+              <option value="Local SEO">Local SEO</option>
+              <option value="On-Page & Content">On-Page &amp; Content</option>
+            </select>
+          </div>
+          <div>
+            <label for="newTipImpact" class="block font-mono text-[11px] uppercase text-mist mb-1.5">Expected Impact Badge *</label>
+            <input id="newTipImpact" type="text" required placeholder="e.g. +24% Organic CTR"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian border border-white/10 text-xs font-mono text-ivory focus:outline-none focus:border-accent" />
+          </div>
+        </div>
+
+        <div>
+          <label for="newTipTitle" class="block font-mono text-[11px] uppercase text-mist mb-1.5">Hack Headline *</label>
+          <input id="newTipTitle" type="text" required placeholder="e.g. Capture AI Overviews with 45-Word Answer Blocks"
+            class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/10 text-sm text-ivory focus:outline-none focus:border-accent" />
+        </div>
+
+        <div>
+          <label for="newTipSummary" class="block font-mono text-[11px] uppercase text-mist mb-1.5">Quick Summary &amp; Steps *</label>
+          <textarea id="newTipSummary" rows="3" required placeholder="Explain why this hack works and how to implement it in 2 minutes..."
+            class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/10 text-sm text-ivory focus:outline-none focus:border-accent"></textarea>
+        </div>
+
+        <div>
+          <label for="newTipSnippet" class="block font-mono text-[11px] uppercase text-mist mb-1.5">Copyable Snippet / Operator / Prompt *</label>
+          <textarea id="newTipSnippet" rows="2" required placeholder='e.g. site:yourdomain.com intitle:"2025" -inurl:2026'
+            class="w-full px-4 py-2.5 rounded-xl bg-obsidian border border-white/10 font-mono text-xs text-accent focus:outline-none focus:border-accent"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-accent text-obsidian font-mono text-xs font-bold uppercase tracking-widest hover:opacity-95 transition">
+          Publish to Live Feed →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       VANILLA JAVASCRIPT ARCHITECTURE
+       ========================================================= -->
+  <script>
+    /* ---------------------------------------------------------
+       1. DIGITAL MARKETING, SEO & BRAND CASE STUDY DATA
+       --------------------------------------------------------- */
+    const PROJECTS_DATA = [
+      {
+        id: 'global-export-seo',
+        title: 'B2B Export Web & Technical SEO Overhaul',
+        category: 'seo',
+        categoryLabel: 'SEO & Organic',
+        year: '2026',
+        role: 'Lead SEO Strategist & Web Developer',
+        metricBadge: '+310% Organic Traffic',
+        colSpan: 'md:col-span-7',
+        gradient: 'from-[#1B2616] via-[#121216] to-[#09090B]',
+        accentHighlight: '#D4FF00',
+        summary: 'Full-site technical SEO re-architecture, international schema deployment, and high-converting B2B inquiry portal for an industrial export manufacturer.',
+        challenge: 'Despite strong global demand, the client’s legacy website suffered from slow mobile load times, duplicate product URLs, and near-zero non-branded organic visibility across international markets.',
+        solution: 'Rebuilt the frontend architecture for sub-second Core Web Vitals, engineered 45+ commercial-intent landing clusters, and deployed structured Product & FAQ schema.',
+        metrics: [
+          { label: 'Organic Traffic', value: '+310%' },
+          { label: 'Top-3 Keywords', value: '84 Terms' },
+          { label: 'Qualified RFQs', value: '3.2× Lift' }
+        ],
+        stack: ['Technical SEO', 'SEMrush', 'Screaming Frog', 'Schema Markup', 'HTML/CSS/JS', 'GA4']
+      },
+      {
+        id: 'tourism-paid-scaling',
+        title: 'International Travel & Tourism Ads Scaling',
+        category: 'ads',
+        categoryLabel: 'Paid Ads (Meta/Google)',
+        year: '2026',
+        role: 'Performance Marketing & Paid Media Lead',
+        metricBadge: '4.8× Blended ROAS',
+        colSpan: 'md:col-span-5',
+        gradient: 'from-[#10252B] via-[#121216] to-[#09090B]',
+        accentHighlight: '#00F0FF',
+        summary: 'Multi-channel Meta Advantage+ video campaigns paired with high-intent Google Search & Performance Max funnels for curated luxury travel packages.',
+        challenge: 'Rising seasonal cost-per-click and unsegmented broad targeting were eroding booking margins and producing low-intent brochure downloads.',
+        solution: 'Designed hook-tested vertical video creatives, implemented server-side Meta CAPI + GTM conversion value tracking, and built dedicated destination landing pages.',
+        metrics: [
+          { label: 'Blended ROAS', value: '4.8×' },
+          { label: 'Cost Per Booking', value: '-42%' },
+          { label: 'Ad Click-Through', value: '6.14%' }
+        ],
+        stack: ['Meta Business Suite', 'Google Search & PMax', 'GTM Server-Side', 'Ad Creative Design', 'CRO']
+      },
+      {
+        id: 'gaming-studio-brand',
+        title: 'Gaming Studio Brand & Social Launch Campaign',
+        category: 'design',
+        categoryLabel: 'Web & Brand Design',
+        year: '2025',
+        role: 'Brand Designer & Social Campaign Strategist',
+        metricBadge: '1.4M+ Organic Views',
+        colSpan: 'md:col-span-5',
+        gradient: 'from-[#2B1519] via-[#141215] to-[#09090B]',
+        accentHighlight: '#FF4D4D',
+        summary: 'Complete visual identity system, motion social launch kit, and interactive teaser website for an indie competitive gaming title.',
+        challenge: 'The studio needed an unmistakable visual identity and high-velocity social rollout to stand out in a crowded launch window before wishlist opening.',
+        solution: 'Crafted a bold kinetic brand system, modular social trailer templates, and an interactive countdown hub that turned social viewers into community members.',
+        metrics: [
+          { label: 'Launch Reach', value: '1.4M+' },
+          { label: 'Wishlist Adds', value: '38,500' },
+          { label: 'Engagement Rate', value: '8.9%' }
+        ],
+        stack: ['Brand Identity', 'Figma', 'Photoshop & Illustrator', 'Wix Studio', 'Social Growth']
+      },
+      {
+        id: 'automotive-digital-ecosystem',
+        title: 'Local Automotive Service Digital Ecosystem',
+        category: 'seo',
+        categoryLabel: 'SEO & Organic',
+        year: '2025',
+        role: 'Full-Stack Growth & Local SEO Specialist',
+        metricBadge: '+240% Service Bookings',
+        colSpan: 'md:col-span-7',
+        gradient: 'from-[#1E2418] via-[#121216] to-[#09090B]',
+        accentHighlight: '#D4FF00',
+        summary: 'Hyper-local Google Business Profile domination, high-intent Google Call Ads, and instant WhatsApp/web booking flow for a multi-bay auto care center.',
+        challenge: 'Competitors were capturing top Map Pack placements for high-margin detailing and repair searches while the client relied solely on walk-ins.',
+        solution: 'Executed a 90-day Local SEO + review velocity sprint, launched geo-fenced Google Search ads, and built a 2-step mobile booking interface.',
+        metrics: [
+          { label: 'Monthly Bookings', value: '+240%' },
+          { label: 'Map Pack Rank', value: '#1 Local' },
+          { label: 'Lead-to-Visit', value: '68%' }
+        ],
+        stack: ['Local SEO & GBP', 'Google Call Ads', 'Conversion Web Design', 'GTM Call Tracking']
+      }
+    ];
+
+    /* ---------------------------------------------------------
+       2. RENDER & FILTER PROJECT BENTO CARDS + SPOTLIGHT GLOW
+       --------------------------------------------------------- */
+    const projectsGrid = document.getElementById('projectsGrid');
+
+    function renderProjects(filter = 'all') {
+      const filtered = filter === 'all'
+        ? PROJECTS_DATA
+        : PROJECTS_DATA.filter(item => item.category === filter);
+
+      projectsGrid.innerHTML = filtered.map((project, index) => `
+        <article
+          onclick="openCaseModal('${project.id}')"
+          data-cursor-text="EXPLORE CASE"
+          class="spotlight-card project-card group ${project.colSpan} rounded-[2rem] bg-charcoal border border-white/10 overflow-hidden cursor-pointer flex flex-col justify-between transition-all duration-500 shadow-xl"
+          style="animation: fadeInScale 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${index * 70}ms both;"
+        >
+          <!-- Top Interactive Campaign Art Stage -->
+          <div class="relative h-64 sm:h-72 p-6 sm:p-8 bg-gradient-to-br ${project.gradient} overflow-hidden flex flex-col justify-between border-b border-white/10">
+            <!-- Top Row: Year + KPI Metric Badge -->
+            <div class="relative z-10 flex items-center justify-between gap-2">
+              <span class="px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-white/10 font-mono text-[11px] text-ivory">
+                ${project.year} // ${project.categoryLabel}
+              </span>
+              <span class="px-3 py-1 rounded-full bg-accent text-obsidian font-mono text-[11px] font-bold shadow-md">
+                ${project.metricBadge}
+              </span>
+            </div>
+
+            <!-- Interactive Campaign Dashboard Preview Card -->
+            <div class="project-art relative z-10 my-auto flex items-center justify-center">
+              <div class="w-full max-w-md rounded-2xl bg-obsidian/80 backdrop-blur-md border border-white/10 p-4 sm:p-5 shadow-2xl">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-white/20"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-white/20"></span>
+                    <span class="w-2.5 h-2.5 rounded-full" style="background:${project.accentHighlight}"></span>
+                  </div>
+                  <span class="font-mono text-[10px] text-mist uppercase">VERIFIED KPI REPORT</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2.5">
+                  ${project.metrics.map((m, idx) => `
+                    <div class="rounded-xl bg-white/5 border border-white/5 p-2.5 flex flex-col justify-between">
+                      <span class="font-display font-extrabold text-sm sm:text-base ${idx === 0 ? 'text-accent' : 'text-ivory'}">${m.value}</span>
+                      <span class="font-mono text-[9px] text-mist uppercase mt-1 leading-tight">${m.label}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Ambient Corner Glow -->
+            <div class="pointer-events-none absolute -bottom-12 -right-12 w-48 h-48 rounded-full opacity-25 blur-2xl" style="background:${project.accentHighlight}"></div>
+          </div>
+
+          <!-- Bottom Editorial Metadata -->
+          <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div class="space-y-2 max-w-xl">
+              <div class="font-mono text-[11px] text-mist uppercase tracking-wider">${project.role}</div>
+              <h3 class="font-display font-bold text-2xl sm:text-3xl text-ivory group-hover:text-accent transition-colors">
+                ${project.title}
+              </h3>
+              <p class="text-sm text-mist leading-relaxed">
+                ${project.summary}
+              </p>
+            </div>
+
+            <div class="shrink-0 flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-ivory group-hover:text-accent transition-colors">
+              <span>Inspect</span>
+              <span class="w-8 h-8 rounded-full border border-white/15 group-hover:border-accent group-hover:bg-accent group-hover:text-obsidian flex items-center justify-center transition-all">
+                ↗
+              </span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      bindInteractiveEffects();
+    }
+
+    // Filter Pill Event Listeners
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-accent', 'text-obsidian', 'font-semibold');
+          b.classList.add('bg-charcoal', 'text-mist', 'border', 'border-white/10');
+        });
+        btn.classList.remove('bg-charcoal', 'text-mist', 'border', 'border-white/10');
+        btn.classList.add('bg-accent', 'text-obsidian', 'font-semibold');
+        renderProjects(btn.dataset.filter);
+      });
+    });
+
+    /* ---------------------------------------------------------
+       3. CASE STUDY SLIDE-OVER MODAL LOGIC
+       --------------------------------------------------------- */
+    const caseStudyModal = document.getElementById('caseStudyModal');
+
+    function openCaseModal(projectId) {
+      const project = PROJECTS_DATA.find(p => p.id === projectId);
+      if (!project) return;
+
+      document.getElementById('modalCategoryTag').textContent = project.categoryLabel;
+      document.getElementById('modalYear').textContent = project.year;
+      document.getElementById('modalProjectTitle').textContent = project.title;
+      document.getElementById('modalClientRole').textContent = `Role: ${project.role}`;
+      document.getElementById('modalChallenge').textContent = project.challenge;
+      document.getElementById('modalSolution').textContent = project.solution;
+
+      // Visual Banner inside Modal
+      const banner = document.getElementById('modalVisualBanner');
+      banner.className = `w-full h-60 sm:h-72 rounded-3xl border border-white/10 p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden bg-gradient-to-br ${project.gradient}`;
+      banner.innerHTML = `
+        <div class="flex items-center justify-between z-10">
+          <span class="px-3 py-1 rounded-full bg-obsidian/85 border border-white/10 font-mono text-xs text-ivory">${project.categoryLabel} // Case Breakdown</span>
+          <span class="px-3 py-1 rounded-full bg-accent text-obsidian font-mono text-xs font-bold">${project.metricBadge}</span>
+        </div>
+        <div class="my-auto mx-auto w-full max-w-lg rounded-2xl bg-obsidian/85 backdrop-blur-md border border-white/15 p-5 z-10 shadow-2xl">
+          <div class="font-mono text-[10px] text-accent uppercase tracking-widest mb-1">EXECUTIVE SUMMARY</div>
+          <div class="font-display font-bold text-base sm:text-lg text-ivory">${project.summary}</div>
+        </div>
+      `;
+
+      // Verified Results Metrics Grid
+      document.getElementById('modalMetricsGrid').innerHTML = project.metrics.map(m => `
+        <div class="p-4 rounded-2xl bg-obsidian border border-white/10 text-center">
+          <div class="font-display font-extrabold text-xl sm:text-2xl text-accent">${m.value}</div>
+          <div class="font-mono text-[10px] sm:text-[11px] text-mist uppercase mt-1">${m.label}</div>
+        </div>
+      `).join('');
+
+      // Execution Stack
+      document.getElementById('modalTechStack').innerHTML = project.stack.map(tech => `
+        <span class="px-3.5 py-1.5 rounded-full bg-obsidian border border-white/10 font-mono text-xs text-ivory">${tech}</span>
+      `).join('');
+
+      caseStudyModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCaseModal() {
+      caseStudyModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    /* ---------------------------------------------------------
+       4. CUSTOM MORPHING CURSOR, MAGNETIC BUTTONS & SPOTLIGHT BORDERS
+       --------------------------------------------------------- */
+    const customCursor = document.getElementById('customCursor');
+    const cursorLabel = document.getElementById('cursorLabel');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.22;
+      cursorY += (mouseY - cursorY) * 0.22;
+      customCursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    function bindInteractiveEffects() {
+      // Morphing cursor on general interactive links
+      document.querySelectorAll('.interactive-el').forEach(el => {
+        if (el.dataset.cursorBound) return;
+        el.dataset.cursorBound = 'true';
+
+        el.addEventListener('mouseenter', () => {
+          const pillText = el.dataset.cursorText;
+          if (pillText) {
+            customCursor.classList.remove('cursor-link');
+            customCursor.classList.add('cursor-pill');
+            cursorLabel.textContent = pillText;
+          } else {
+            customCursor.classList.remove('cursor-pill');
+            customCursor.classList.add('cursor-link');
+          }
+        });
+
+        el.addEventListener('mouseleave', () => {
+          customCursor.classList.remove('cursor-link', 'cursor-pill');
+        });
+      });
+
+      // Magnetic hover pull on primary buttons
+      document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        if (btn.dataset.magneticBound) return;
+        btn.dataset.magneticBound = 'true';
+
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const pullX = (e.clientX - (rect.left + rect.width / 2)) * 0.22;
+          const pullY = (e.clientY - (rect.top + rect.height / 2)) * 0.22;
+          btn.style.transform = `translate(${pullX}px, ${pullY}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translate(0px, 0px)';
+        });
+      });
+
+      // Spotlight border glow on Bento cards
+      document.querySelectorAll('.spotlight-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--spot-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--spot-y', `${e.clientY - rect.top}px`);
+        });
+      });
+    }
+
+    /* ---------------------------------------------------------
+    // Generative Orbital Radar & Growth Node Mesh Canvas inside Hero Card
+    const meshCanvas = document.getElementById('heroMeshCanvas');
+    const ctx = meshCanvas.getContext('2d');
+    let meshTime = 0;
+
+    function resizeMeshCanvas() {
+      if (!meshCanvas) return;
+      const rect = meshCanvas.parentElement.getBoundingClientRect();
+      meshCanvas.width = rect.width;
+      meshCanvas.height = rect.height;
+    }
+    window.addEventListener('resize', resizeMeshCanvas);
+    resizeMeshCanvas();
+
+    function drawMeshGradient() {
+      if (!ctx) return;
+      meshTime += 0.015;
+      const w = meshCanvas.width;
+      const h = meshCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const accentRgb = getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb').trim() || '212, 255, 0';
+
+      // Ambient Moving Spotlight Aura
+      const x1 = w * 0.5 + Math.cos(meshTime) * (w * 0.25);
+      const y1 = h * 0.42 + Math.sin(meshTime * 0.85) * (h * 0.2);
+      const grad1 = ctx.createRadialGradient(x1, y1, 10, x1, y1, w * 0.68);
+      grad1.addColorStop(0, `rgba(${accentRgb}, 0.26)`);
+      grad1.addColorStop(1, 'rgba(18, 18, 22, 0)');
+      ctx.fillStyle = grad1;
+      ctx.fillRect(0, 0, w, h);
+
+      // Subtle Architectural Grid
+      ctx.strokeStyle = 'rgba(244, 244, 240, 0.04)';
+      ctx.lineWidth = 1;
+      const step = 32;
+      for (let gx = 0; gx < w; gx += step) {
+        ctx.beginPath();
+        ctx.moveTo(gx, 0);
+        ctx.lineTo(gx, h);
+        ctx.stroke();
+      }
+      for (let gy = 0; gy < h; gy += step) {
+        ctx.beginPath();
+        ctx.moveTo(0, gy);
+        ctx.lineTo(w, gy);
+        ctx.stroke();
+      }
+
+      // Animated Connected Growth Constellation Nodes
+      const nodes = [
+        { x: w * 0.18 + Math.sin(meshTime) * 18, y: h * 0.25 + Math.cos(meshTime * 1.1) * 14 },
+        { x: w * 0.82 + Math.cos(meshTime * 0.9) * 18, y: h * 0.28 + Math.sin(meshTime) * 16 },
+        { x: w * 0.5 + Math.sin(meshTime * 0.7) * 24, y: h * 0.52 + Math.cos(meshTime * 1.2) * 12 },
+        { x: w * 0.24 + Math.cos(meshTime * 1.1) * 16, y: h * 0.78 + Math.sin(meshTime * 0.8) * 14 },
+        { x: w * 0.78 + Math.sin(meshTime * 0.85) * 16, y: h * 0.76 + Math.cos(meshTime) * 14 }
+      ];
+
+      ctx.strokeStyle = `rgba(${accentRgb}, 0.18)`;
+      ctx.lineWidth = 1;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+
+      nodes.forEach((node, idx) => {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, idx === 2 ? 3.5 : 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${accentRgb}, ${idx === 2 ? 0.85 : 0.55})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(drawMeshGradient);
+    }
+    drawMeshGradient();
+
+    /* ---------------------------------------------------------
+       6. CAPABILITIES ACCORDION TOGGLE
+       --------------------------------------------------------- */
+    function toggleAccordion(clickedItem) {
+      const allItems = document.querySelectorAll('.accordion-item');
+      allItems.forEach(item => {
+        const icon = item.querySelector('.accordion-icon');
+        if (item === clickedItem) {
+          const isActive = item.classList.toggle('active');
+          icon.style.transform = isActive ? 'rotate(45deg)' : 'rotate(0deg)';
+        } else {
+          item.classList.remove('active');
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    /* ---------------------------------------------------------
+       7. GROWTH LAB: ACCENT SWITCHER, ROAS ESTIMATOR & MARTECH PILLS
+       --------------------------------------------------------- */
+    function setStudioAccent(hex, rgb, name) {
+      document.documentElement.style.setProperty('--accent', hex);
+      document.documentElement.style.setProperty('--accent-rgb', rgb);
+      const label = document.getElementById('activePaletteLabel');
+      if (label) label.textContent = `ACCENT: ${name.toUpperCase()}`;
+      showToast(`Studio accent switched to ${name}`);
+    }
+
+    // Interactive ROAS & Traffic Growth Estimator
+    const adSpendSlider = document.getElementById('adSpendSlider');
+    const seoMonthsSlider = document.getElementById('seoMonthsSlider');
+
+    function updateGrowthEstimator() {
+      if (!adSpendSlider || !seoMonthsSlider) return;
+      const spend = Number(adSpendSlider.value);
+      const months = Number(seoMonthsSlider.value);
+
+      document.getElementById('adSpendDisplay').textContent = `$${spend.toLocaleString()} / mo`;
+      document.getElementById('seoMonthsDisplay').textContent = `${months} Months`;
+
+      // Projected blended model based on 4.6x target ROAS + compounding SEO & CRO lift
+      const roasMultiplier = 4.6 + (months >= 6 ? 0.35 : 0);
+      const estRevenue = Math.round(spend * roasMultiplier);
+      const organicLift = Math.round(45 + months * 25);
+      const estLeads = Math.round((spend / 24) + (months * 17));
+
+      document.getElementById('projectedRevenue').textContent = `$${estRevenue.toLocaleString()}`;
+      document.getElementById('projectedOrganic').textContent = `+${organicLift}%`;
+      document.getElementById('projectedLeads').textContent = `${estLeads}+`;
+    }
+
+    if (adSpendSlider && seoMonthsSlider) {
+      adSpendSlider.addEventListener('input', updateGrowthEstimator);
+      seoMonthsSlider.addEventListener('input', updateGrowthEstimator);
+      updateGrowthEstimator();
+    }
+
+    // Draggable Physics-Style MarTech & Design Pills
+    const MARTECH_PILLS = [
+      { label: 'SEMrush', x: 6, y: 8 },
+      { label: 'Screaming Frog', x: 42, y: 10 },
+      { label: 'Google Ads', x: 12, y: 36 },
+      { label: 'Meta Business Suite', x: 46, y: 38 },
+      { label: 'GA4 & GTM', x: 8, y: 66 },
+      { label: 'Wix Studio', x: 42, y: 68 },
+      { label: 'HTML / CSS / JS', x: 70, y: 52 }
+    ];
+
+    const pillContainer = document.getElementById('pillContainer');
+
+    function initMagneticPills() {
+      if (!pillContainer) return;
+      pillContainer.innerHTML = '';
+      MARTECH_PILLS.forEach((pill) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.textContent = pill.label;
+        el.dataset.cursorText = 'DRAG ME';
+        el.className = 'interactive-el absolute px-3.5 py-2 rounded-full bg-charcoal border border-white/15 hover:border-accent hover:text-accent hover:shadow-[0_0_20px_rgba(var(--accent-rgb),0.3)] font-mono text-xs text-ivory shadow-lg cursor-grab active:cursor-grabbing transition-colors';
+        el.style.left = `${pill.x}%`;
+        el.style.top = `${pill.y}%`;
+
+        let isDragging = false;
+        let startX, startY, origLeft, origTop;
+
+        el.addEventListener('pointerdown', (e) => {
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          origLeft = el.offsetLeft;
+          origTop = el.offsetTop;
+          el.setPointerCapture(e.pointerId);
+        });
+
+        el.addEventListener('pointermove', (e) => {
+          if (isDragging) {
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            const maxX = pillContainer.clientWidth - el.offsetWidth;
+            const maxY = pillContainer.clientHeight - el.offsetHeight;
+            const nextX = Math.max(0, Math.min(maxX, origLeft + dx));
+            const nextY = Math.max(0, Math.min(maxY, origTop + dy));
+            el.style.left = `${nextX}px`;
+            el.style.top = `${nextY}px`;
+            el.style.transform = 'translate(0, 0)';
+          } else {
+            const rect = el.getBoundingClientRect();
+            const offsetX = (e.clientX - (rect.left + rect.width / 2)) * 0.24;
+            const offsetY = (e.clientY - (rect.top + rect.height / 2)) * 0.24;
+            el.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+          }
+        });
+
+        el.addEventListener('pointerup', () => {
+          isDragging = false;
+        });
+
+        el.addEventListener('pointerleave', () => {
+          if (!isDragging) {
+            el.style.transform = 'translate(0, 0)';
+          }
+        });
+
+        pillContainer.appendChild(el);
+      });
+      bindInteractiveEffects();
+    }
+
+    function resetMagneticPills() {
+      initMagneticPills();
+      showToast('MarTech stack positions reset');
+    }
+
+    /* ---------------------------------------------------------
+       8. CONTACT MODAL, SCOPE PILLS, COPY EMAIL & TOAST FEEDBACK
+       --------------------------------------------------------- */
+    const contactModal = document.getElementById('contactModal');
+
+    function openContactModal(defaultScope = 'SEO Audit') {
+      contactModal.classList.remove('hidden');
+      contactModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+
+      const pills = document.querySelectorAll('#modalScopePills .scope-pill');
+      pills.forEach(p => {
+        if (p.dataset.scope.toLowerCase() === defaultScope.toLowerCase()) {
+          selectScope(p, 'modalScopeInput');
+        }
+      });
+    }
+
+    function closeContactModal() {
+      contactModal.classList.add('hidden');
+      contactModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function selectScope(btn, hiddenInputId) {
+      const container = btn.parentElement;
+      container.querySelectorAll('.scope-pill').forEach(pill => {
+        pill.classList.remove('bg-accent', 'text-obsidian', 'font-semibold');
+        pill.classList.add('bg-charcoal', 'text-mist', 'border', 'border-white/10');
+      });
+      btn.classList.remove('bg-charcoal', 'bg-obsidian', 'text-mist', 'border', 'border-white/10');
+      btn.classList.add('bg-accent', 'text-obsidian', 'font-semibold');
+      document.getElementById(hiddenInputId).value = btn.dataset.scope;
+    }
+
+    function handleFormSubmit(e, source) {
+      e.preventDefault();
+      if (source === 'footer') {
+        document.getElementById('footerContactForm').classList.add('hidden');
+        document.getElementById('footerFormSuccess').classList.remove('hidden');
+      } else {
+        document.getElementById('modalContactForm').classList.add('hidden');
+        document.getElementById('modalFormSuccess').classList.remove('hidden');
+      }
+      showToast('Campaign inquiry sent to Johan Saji!');
+    }
+
+    function resetForm(source) {
+      if (source === 'footer') {
+        document.getElementById('footerContactForm').reset();
+        document.getElementById('footerContactForm').classList.remove('hidden');
+        document.getElementById('footerFormSuccess').classList.add('hidden');
+      } else {
+        document.getElementById('modalContactForm').reset();
+        document.getElementById('modalContactForm').classList.remove('hidden');
+        document.getElementById('modalFormSuccess').classList.add('hidden');
+      }
+    }
+
+    function copyStudioEmail() {
+      const email = 'hello@johansaji.com';
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast('Copied hello@johansaji.com to clipboard!');
+    }
+
+    let toastTimeout;
+    function showToast(message) {
+      const toast = document.getElementById('toastBanner');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-4');
+      }, 2800);
+    }
+
+    /* ---------------------------------------------------------
+       9. DAILY SEO TIPS & HACKS ENGINE (SEARCH, FILTER, BOOKMARK, PUBLISH)
+       --------------------------------------------------------- */
+    const DEFAULT_SEO_TIPS = [
+      {
+        id: 'geo-ai-overview-citations',
+        featured: true,
+        category: 'GEO / AI Search',
+        date: 'HACK #142 • TODAY',
+        readTime: '3 MIN PLAYBOOK',
+        impact: '+38% AI Citations',
+        title: 'Win Google AI Overviews & ChatGPT Citations with 45-Word Entity Answer Blocks',
+        summary: 'Generative search engines extract concise, self-contained definitions right under question-based H2 headings. Adding a 40–50 word direct answer block with structured FAQPage schema dramatically boosts citation frequency.',
+        steps: [
+          'Identify your top 10 commercial questions in Google Search Console with high impressions and positions 2–8.',
+          'Place an exact-match question H2 followed immediately by a bolded 45-word factual answer paragraph.',
+          'Include 2 concrete metrics or entity names and wrap the Q&A pair in valid FAQPage JSON-LD schema.'
+        ],
+        snippet: `<script type="application/ld+json">\n{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How fast does Technical SEO improve rankings?","acceptedAnswer":{"@type":"Answer","text":"Fixing crawl bottlenecks, Core Web Vitals, and internal link depth typically yields measurable impression lifts within 14 to 28 days."}}]}\n<\/script>`
+      },
+      {
+        id: 'gsc-striking-distance-ctr',
+        featured: false,
+        category: 'On-Page & Content',
+        date: 'HACK #141 • YESTERDAY',
+        readTime: '2 MIN HACK',
+        impact: '+22% Organic CTR',
+        title: 'Mine "Striking Distance" Keywords (Positions 4–12) for Instant Traffic Gains',
+        summary: 'Pages ranking on the bottom of Page 1 already have Google’s trust. Updating title tags with bracketed value hooks and injecting missing sub-entities pushes them into the Top 3 without building new backlinks.',
+        steps: [
+          'Open Google Search Console → Performance → Filter Position between 4.0 and 12.0.',
+          'Sort by highest Impressions and export queries where CTR is under 2.5%.',
+          'Add the primary query into the first 35 characters of your Title Tag + a fresh year or outcome hook.'
+        ],
+        snippet: `GSC Regex Filter for Question Intent:\n^(who|what|where|when|why|how|best|top|vs)\\b`
+      },
+      {
+        id: 'orphan-page-internal-link-boost',
+        featured: false,
+        category: 'Technical SEO',
+        date: 'HACK #140 • 2 DAYS AGO',
+        readTime: '4 MIN AUDIT',
+        impact: '+41% Crawl Depth',
+        title: 'Find & Rescue High-Authority Orphan Pages Using Google Search Operators',
+        summary: 'Important service or blog URLs buried 4+ clicks deep lose PageRank. Use this exact Google search operator combo to locate indexable pages that lack internal contextual anchor links.',
+        steps: [
+          'Run the site operator below in Google to find indexed pages on your domain covering your target topic.',
+          'Cross-check in Screaming Frog for URLs with fewer than 3 unique internal inlinks.',
+          'Add 3 descriptive exact-match internal links from your highest-traffic blog posts.'
+        ],
+        snippet: `site:yourdomain.com "target keyword" -inurl:tag -inurl:category`
+      },
+      {
+        id: 'gbp-local-map-pack-services',
+        featured: false,
+        category: 'Local SEO',
+        date: 'HACK #139 • 3 DAYS AGO',
+        readTime: '3 MIN SPRINT',
+        impact: '#1 Map Pack',
+        title: 'Trigger Local Map Pack Justification Badges via Custom GBP Services',
+        summary: 'Google Business Profile displays "Provides: [Service]" badges in the Local 3-Pack when your custom service descriptions match the searcher’s exact long-tail query.',
+        steps: [
+          'Open Google Business Profile → Edit Services → Add Custom Service for every sub-niche keyword.',
+          'Write a 250-character geo-relevant description including your city/neighborhood and core service.',
+          'Embed matching H3 service sections on your linked landing page.'
+        ],
+        snippet: `GBP Service Formula:\n[Core Service] in [City/Area] — Same-day consultation, transparent pricing & certified specialists.`
+      },
+      {
+        id: 'crawl-budget-parameter-cleanup',
+        featured: false,
+        category: 'Technical SEO',
+        date: 'HACK #138 • 4 DAYS AGO',
+        readTime: '2 MIN FIX',
+        impact: '-60% Crawl Waste',
+        title: 'Stop Faceted Filter & UTM URLs from Bloating Your Index',
+        summary: 'E-commerce filters and tracking parameters create thousands of near-duplicate URLs that dilute crawl equity. Enforce self-referencing canonicals and clean robots.txt disallow rules.',
+        steps: [
+          'Check GSC → Pages → "Alternate page with proper canonical tag" to spot parameter spikes.',
+          'Ensure every paginated and filtered view points its rel="canonical" back to the clean root category URL.',
+          'Block useless session/sort parameters in robots.txt while keeping CSS/JS crawlable.'
+        ],
+        snippet: `User-agent: *\nDisallow: /*?sort=\nDisallow: /*?filter=\nDisallow: /*?sessionid=`
+      },
+      {
+        id: 'content-refresh-decay-alert',
+        featured: false,
+        category: 'On-Page & Content',
+        date: 'HACK #137 • 5 DAYS AGO',
+        readTime: '3 MIN WORKFLOW',
+        impact: '+65% Traffic Recovery',
+        title: 'Reverse Content Decay by Updating Only the Top 20% Above-the-Fold',
+        summary: 'When an evergreen post drops 30%+ in clicks over 90 days, you rarely need a full rewrite. Refreshing the intro hook, comparison table, and dateModified schema restores freshness signals fast.',
+        steps: [
+          'Compare Last 3 Months vs. Previous 3 Months in GSC and sort by largest negative Clicks difference.',
+          'Replace outdated stats in the first 150 words and add a scannable summary comparison table.',
+          'Update dateModified in Article JSON-LD and request indexing in GSC.'
+        ],
+        snippet: `"datePublished": "2025-02-10",\n"dateModified": "${new Date().toISOString().split('T')[0]}"`
+      }
+    ];
+
+    let seoTipsList = [];
+    let savedTipIds = [];
+    let activeTipCategory = 'all';
+    let showSavedTipsOnly = false;
+
+    function loadSeoTipsState() {
+      try {
+        const storedTips = JSON.parse(localStorage.getItem('johan_seo_tips_v1') || 'null');
+        seoTipsList = Array.isArray(storedTips) && storedTips.length ? storedTips : [...DEFAULT_SEO_TIPS];
+        savedTipIds = JSON.parse(localStorage.getItem('johan_saved_tips_v1') || '[]');
+      } catch (err) {
+        seoTipsList = [...DEFAULT_SEO_TIPS];
+        savedTipIds = [];
+      }
+      updateSavedCountBadge();
+    }
+
+    function updateSavedCountBadge() {
+      const badge = document.getElementById('savedTipsCount');
+      if (badge) badge.textContent = savedTipIds.length;
+    }
+
+    function toggleBookmarkTip(tipId, event) {
+      if (event) event.stopPropagation();
+      const idx = savedTipIds.indexOf(tipId);
+      if (idx > -1) {
+        savedTipIds.splice(idx, 1);
+        showToast('Removed from Saved Hacks');
+      } else {
+        savedTipIds.push(tipId);
+        showToast('★ Hack bookmarked to your browser!');
+      }
+      try {
+        localStorage.setItem('johan_saved_tips_v1', JSON.stringify(savedTipIds));
+      } catch (e) {}
+      updateSavedCountBadge();
+      renderSeoTips();
+    }
+
+    function toggleSavedTipsOnly() {
+      showSavedTipsOnly = !showSavedTipsOnly;
+      const btn = document.getElementById('savedFilterToggle');
+      if (btn) {
+        if (showSavedTipsOnly) {
+          btn.classList.add('bg-accent', 'text-obsidian', 'border-accent', 'font-bold');
+          btn.classList.remove('bg-charcoal', 'text-ivory');
+        } else {
+          btn.classList.remove('bg-accent', 'text-obsidian', 'border-accent', 'font-bold');
+          btn.classList.add('bg-charcoal', 'text-ivory');
+        }
+      }
+      renderSeoTips();
+    }
+
+    function copyTipSnippet(tipId, event) {
+      if (event) event.stopPropagation();
+      const tip = seoTipsList.find(t => t.id === tipId);
+      if (!tip) return;
+      const tempArea = document.createElement('textarea');
+      tempArea.value = tip.snippet;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempArea);
+      showToast('SEO snippet copied to clipboard!');
+    }
+
+    function renderSeoTips() {
+      const featuredContainer = document.getElementById('featuredSeoHackCard');
+      const gridContainer = document.getElementById('seoTipsGrid');
+      const searchInput = document.getElementById('seoTipSearch');
+      if (!featuredContainer || !gridContainer) return;
+
+      const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
+      // Render Featured Hack of the Day
+      const featured = seoTipsList.find(t => t.featured) || seoTipsList[0];
+      if (featured) {
+        const isSaved = savedTipIds.includes(featured.id);
+        featuredContainer.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="px-3 py-1 rounded-full bg-accent text-obsidian font-mono text-[11px] font-bold uppercase tracking-wider">★ Hack of the Day</span>
+                <span class="px-3 py-1 rounded-full bg-obsidian border border-white/10 font-mono text-[11px] text-ivory">${featured.category}</span>
+                <span class="font-mono text-xs text-mist">${featured.date}</span>
+              </div>
+              <h3 class="font-display font-extrabold text-2xl sm:text-4xl text-ivory leading-tight">
+                ${featured.title}
+              </h3>
+              <p class="text-sm sm:text-base text-mist leading-relaxed">
+                ${featured.summary}
+              </p>
+              <div class="flex flex-wrap items-center gap-3 pt-2">
+                <button onclick="openTipDetailModal('${featured.id}')" data-cursor-text="READ HACK" class="interactive-el px-5 py-3 rounded-full bg-ivory hover:bg-accent text-obsidian font-mono text-xs font-bold uppercase tracking-wider transition-colors">
+                  Read Full Playbook →
+                </button>
+                <button onclick="copyTipSnippet('${featured.id}', event)" class="interactive-el px-4 py-3 rounded-full bg-obsidian border border-white/15 hover:border-accent font-mono text-xs text-ivory uppercase tracking-wider transition-colors">
+                  Copy JSON-LD Schema
+                </button>
+                <button onclick="toggleBookmarkTip('${featured.id}', event)" class="interactive-el px-4 py-3 rounded-full bg-obsidian border border-white/15 hover:border-accent font-mono text-xs ${isSaved ? 'text-accent border-accent' : 'text-mist'} uppercase transition-colors">
+                  ${isSaved ? '★ Saved' : '☆ Save'}
+                </button>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="rounded-2xl bg-obsidian/90 border border-white/10 p-5 space-y-3 shadow-2xl">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono text-[10px] text-accent uppercase tracking-widest">READY-TO-DEPLOY SNIPPET</span>
+                  <span class="px-2.5 py-0.5 rounded-md bg-accent/15 text-accent font-mono text-[11px] font-bold">${featured.impact}</span>
+                </div>
+                <pre class="font-mono text-[11px] text-ivory/90 bg-charcoal/90 p-3.5 rounded-xl overflow-x-auto max-h-40 leading-relaxed">${featured.snippet.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</pre>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Filter Grid Cards
+      const filtered = seoTipsList.filter(tip => {
+        const matchesCat = activeTipCategory === 'all' || tip.category === activeTipCategory;
+        const matchesSaved = !showSavedTipsOnly || savedTipIds.includes(tip.id);
+        const matchesQuery = !query ||
+          tip.title.toLowerCase().includes(query) ||
+          tip.summary.toLowerCase().includes(query) ||
+          tip.category.toLowerCase().includes(query) ||
+          tip.snippet.toLowerCase().includes(query);
+        return matchesCat && matchesSaved && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        gridContainer.innerHTML = `
+          <div class="col-span-full rounded-3xl bg-charcoal border border-white/10 p-10 text-center space-y-3">
+            <div class="font-mono text-sm text-accent uppercase">No matching SEO hacks found</div>
+            <p class="text-xs text-mist">Try clearing your keyword search or switching category filters.</p>
+          </div>
+        `;
+        return;
+      }
+
+      gridContainer.innerHTML = filtered.map((tip) => {
+        const isSaved = savedTipIds.includes(tip.id);
+        const escapedSnippet = tip.snippet.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return `
+          <article onclick="openTipDetailModal('${tip.id}')" data-cursor-text="READ HACK"
+            class="spotlight-card interactive-el group rounded-3xl bg-charcoal border border-white/10 hover:border-accent/50 p-6 flex flex-col justify-between cursor-pointer transition-all duration-300 shadow-lg">
+            <div class="space-y-4">
+              <!-- Top Meta Row -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2.5 py-1 rounded-full bg-obsidian border border-white/10 font-mono text-[10px] text-accent uppercase">
+                  ${tip.category}
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-accent/15 text-accent font-mono text-[10px] font-bold">
+                  ${tip.impact}
+                </span>
+              </div>
+
+              <!-- Date + Read Time -->
+              <div class="font-mono text-[10px] text-mist uppercase tracking-wider">
+                ${tip.date} • ${tip.readTime}
+              </div>
+
+              <!-- Title & Summary -->
+              <h3 class="font-display font-bold text-xl text-ivory group-hover:text-accent transition-colors leading-snug">
+                ${tip.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-mist leading-relaxed line-clamp-3">
+                ${tip.summary}
+              </p>
+
+              <!-- Compact Code / Operator Preview -->
+              <div class="p-3 rounded-xl bg-obsidian border border-white/10 font-mono text-[11px] text-ivory/85 truncate">
+                ${escapedSnippet}
+              </div>
+            </div>
+
+            <!-- Card Footer Actions -->
+            <div class="pt-5 mt-5 border-t border-white/10 flex items-center justify-between gap-2">
+              <button onclick="copyTipSnippet('${tip.id}', event)" class="px-3 py-1.5 rounded-lg bg-obsidian hover:bg-accent hover:text-obsidian border border-white/10 font-mono text-[11px] text-ivory uppercase transition-colors">
+                Copy Hack
+              </button>
+              <div class="flex items-center gap-2">
+                <button onclick="toggleBookmarkTip('${tip.id}', event)" aria-label="Save SEO tip" class="w-8 h-8 rounded-lg bg-obsidian border border-white/10 hover:border-accent flex items-center justify-center font-mono text-xs ${isSaved ? 'text-accent border-accent' : 'text-mist'}">
+                  ${isSaved ? '★' : '☆'}
+                </button>
+                <span class="font-mono text-[11px] text-ivory group-hover:text-accent uppercase">Details ↗</span>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      bindInteractiveEffects();
+    }
+
+    // Category filter listeners
+    document.querySelectorAll('.tip-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tip-filter-btn').forEach(b => {
+          b.classList.remove('bg-accent', 'text-obsidian', 'font-semibold');
+          b.classList.add('bg-charcoal', 'text-mist', 'border', 'border-white/10');
+        });
+        btn.classList.remove('bg-charcoal', 'text-mist', 'border', 'border-white/10');
+        btn.classList.add('bg-accent', 'text-obsidian', 'font-semibold');
+        activeTipCategory = btn.dataset.tipCat;
+        renderSeoTips();
+      });
+    });
+
+    const seoTipSearchEl = document.getElementById('seoTipSearch');
+    if (seoTipSearchEl) {
+      seoTipSearchEl.addEventListener('input', renderSeoTips);
+    }
+
+    // Detail Modal Controls
+    function openTipDetailModal(tipId) {
+      const tip = seoTipsList.find(t => t.id === tipId);
+      if (!tip) return;
+      document.getElementById('tipModalCategory').textContent = tip.category;
+      document.getElementById('tipModalDate').textContent = tip.date;
+      document.getElementById('tipModalImpact').textContent = tip.impact;
+      document.getElementById('tipModalReadTime').textContent = tip.readTime;
+      document.getElementById('tipModalTitle').textContent = tip.title;
+      document.getElementById('tipModalSummary').textContent = tip.summary;
+      document.getElementById('tipModalSnippet').textContent = tip.snippet;
+      document.getElementById('tipModalSteps').innerHTML = (tip.steps || [tip.summary])
+        .map(step => `<li>${step}</li>`).join('');
+
+      const copyBtn = document.getElementById('tipModalCopyBtn');
+      copyBtn.onclick = (e) => copyTipSnippet(tip.id, e);
+
+      const modal = document.getElementById('seoTipDetailModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTipDetailModal() {
+      const modal = document.getElementById('seoTipDetailModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // New Tip Publisher Modal Controls
+    function openNewTipModal() {
+      const modal = document.getElementById('newTipModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNewTipModal() {
+      const modal = document.getElementById('newTipModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function handleNewTipSubmit(e) {
+      e.preventDefault();
+      const category = document.getElementById('newTipCategory').value;
+      const impact = document.getElementById('newTipImpact').value.trim();
+      const title = document.getElementById('newTipTitle').value.trim();
+      const summary = document.getElementById('newTipSummary').value.trim();
+      const snippet = document.getElementById('newTipSnippet').value.trim();
+
+      seoTipsList.forEach(t => { t.featured = false; });
+
+      const newTip = {
+        id: 'tip-' + Date.now(),
+        featured: true,
+        category,
+        date: `HACK #${143 + seoTipsList.length - DEFAULT_SEO_TIPS.length} • JUST NOW`,
+        readTime: '2 MIN HACK',
+        impact,
+        title,
+        summary,
+        steps: [
+          summary,
+          'Copy the actionable snippet below and deploy it on your target landing page or Google Search Console.',
+          'Monitor impressions and CTR shifts in GSC over the next 14 days.'
+        ],
+        snippet
+      };
+
+      seoTipsList.unshift(newTip);
+      try {
+        localStorage.setItem('johan_seo_tips_v1', JSON.stringify(seoTipsList));
+      } catch (err) {}
+
+      e.target.reset();
+      closeNewTipModal();
+      renderSeoTips();
+      showToast('New Daily SEO Hack published live!');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeCaseModal();
+        closeContactModal();
+        closeTipDetailModal();
+        closeNewTipModal();
+      }
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal-up').forEach(el => revealObserver.observe(el));
+
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes fadeInScale {
+        from { opacity: 0; transform: translateY(18px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSeoTipsState();
+      renderProjects('all');
+      renderSeoTips();
+      initMagneticPills();
+      bindInteractiveEffects();
+    });
+  </script>
+</body>
+</html>
